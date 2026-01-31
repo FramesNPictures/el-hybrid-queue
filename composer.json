@@ -1,0 +1,46 @@
+{
+  "name": "framesnpictures/el-hybrid-queue",
+  "description": "Hybrid Queue for Laravel",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "0fnp",
+      "role": "Maintainer"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "illuminate/support": ">=10.0|^11.0",
+    "framesnpictures/el-module": "^0.15.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^8.0 || ^9.0",
+    "phpunit/phpunit": "^10.0 || ^11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ElHybridQueue\\": "src/"
+    },
+    "files": [
+      "src/functions.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ElHybridQueue\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "HybridQueueModule"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
