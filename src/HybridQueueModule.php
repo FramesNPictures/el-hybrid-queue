@@ -39,7 +39,7 @@ class HybridQueueModule extends ElModule
         return [
             'queue.connections.' . self::CONNECTION_NAME => [
                 'driver' => 'database',
-                'connection' => self::CONNECTION_NAME,
+                'connection' => config('database.default'),
                 'table' => self::TABLE_NAME,
                 'queue' => 'default',
                 'retry_after' => 90,
