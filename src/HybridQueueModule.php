@@ -3,7 +3,6 @@
 namespace FNP\HybridQueue;
 
 use Fnp\ElModule\ElModule;
-use Fnp\ElModule\Features\ModuleConfigMerge;
 use Fnp\ElModule\Features\ModuleConfigOverride;
 use Fnp\ElModule\Features\ModuleMigrations;
 use Fnp\ElModule\Features\ModuleSchedule;
@@ -12,7 +11,6 @@ use Illuminate\Console\Scheduling\Schedule;
 
 class HybridQueueModule extends ElModule
 {
-    use ModuleConfigMerge;
     use ModuleConfigOverride;
     use ModuleMigrations;
     use ModuleSchedule;
@@ -28,13 +26,6 @@ class HybridQueueModule extends ElModule
     const FETCH_ATTEMPTS = 3;
 
     const FETCH_COOLDOWN = 30;
-
-    public function defineConfigMergeFiles(): array
-    {
-        return [
-            'queue' => __DIR__ . '/../config/queue.php',
-        ];
-    }
 
     public function defineMigrationFolders(): array
     {
