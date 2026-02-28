@@ -51,9 +51,13 @@ class ProcessHybridQueueJob implements ShouldQueue
                         $payload = json_decode($job->payload, true);
                         $command = unserialize($payload['data']['command']);
 
-                        // Push the job to the queue
-                        // -------------------------
-                        Queue::pushOn($job->queue, $command);
+                        // Calculate delay based on available_at
+                        // -------------------------------------
+                        $delay = max(0, $job->available_at - time());
+
+                        // Push the job to the queue with delay
+                        // ------------------------------------
+                        Queue::laterOn($job->queue, $delay, $command);
 
                         // Delete the job after successful push
                         // ------------------------------------
