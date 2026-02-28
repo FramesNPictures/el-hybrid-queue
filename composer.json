@@ -10,25 +10,23 @@
     }
   ],
   "require": {
-    "php": ">=8.1",
+    "php": ">=8.2",
     "illuminate/support": ">=10.0|^11.0",
     "framesnpictures/el-module": "^0.15.0"
   },
   "require-dev": {
     "orchestra/testbench": "^8.0 || ^9.0",
-    "phpunit/phpunit": "^10.0 || ^11.0"
+    "phpunit/phpunit": "^10.0 || ^11.0",
+    "laravel/pint": "^1.27"
   },
   "autoload": {
     "psr-4": {
-      "ElHybridQueue\\": "src/"
-    },
-    "files": [
-      "src/functions.php"
-    ]
+      "FNP\\HybridQueue\\": "src/"
+    }
   },
   "autoload-dev": {
     "psr-4": {
-      "ElHybridQueue\\Tests\\": "tests/"
+      "FNP\\HybridQueue\\Tests\\": "tests/"
     }
   },
   "extra": {

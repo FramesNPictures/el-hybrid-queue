@@ -1,8 +1,8 @@
 <?php
 
-namespace ElHybridQueue\Tests;
+namespace Fnp\ElStart\Tests;
 
-use ElHybridQueue\HybridQueueModule;
+use Fnp\ElStart\ElStartModule;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -10,21 +10,23 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            HybridQueueModule::class,
+            ElStartModule::class,
         ];
     }
 
-    protected function getEnvironmentSetUp($app)
+    protected function defineDatabaseMigrations(): void
     {
-        // Use in-memory sqlite for tests
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+    }
+
+    protected function defineEnvironment($app): void
+    {
+        // Setup default database to use sqlite :memory:
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connections.testing', [
             'driver' => 'sqlite',
             'database' => ':memory:',
             'prefix' => '',
         ]);
-
-        // Ensure package config is loaded
-        $app['config']->set('el-hybrid-queue.enabled', true);
     }
 }
