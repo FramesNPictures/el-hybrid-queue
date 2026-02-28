@@ -9,7 +9,6 @@ use Fnp\ElModule\Features\ModuleMigrations;
 use Fnp\ElModule\Features\ModuleSchedule;
 use FNP\HybridQueue\Jobs\ProcessHybridQueueJob;
 use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Foundation\Bus\PendingDispatch;
 
 class HybridQueueModule extends ElModule
 {
@@ -29,18 +28,6 @@ class HybridQueueModule extends ElModule
     const FETCH_ATTEMPTS = 3;
 
     const FETCH_COOLDOWN = 30;
-
-    public function boot(): void
-    {
-        parent::boot();
-
-        PendingDispatch::macro('onHybridQueue', function (?string $queue = null) {
-            /** @var PendingDispatch $this */
-            return $this
-                ->onConnection(self::CONNECTION_NAME)
-                ->onQueue($queue ?? 'default');
-        });
-    }
 
     public function defineConfigMergeFiles(): array
     {
