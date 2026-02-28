@@ -41,7 +41,7 @@ class ProcessHybridQueueJob implements ShouldQueue
                     // --------------------
                     DB::table(HybridQueueModule::TABLE_NAME)
                         ->where('id', $job->id)
-                        ->increment('attempts', [
+                        ->increment('attempts', 1, [
                             'reserved_at' => time(),
                         ]);
 
