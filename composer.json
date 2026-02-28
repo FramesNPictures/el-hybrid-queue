@@ -32,7 +32,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "HybridQueueModule"
+        "FNP\\HybridQueue\\HybridQueueModule"
       ]
     }
   },
